@@ -1,6 +1,6 @@
 package com.demo.rest2.pojo;
 
-import java.time.LocalDate;
+import org.springframework.beans.propertyeditors.CustomNumberEditor;
 
 public class Customer {
 
@@ -12,6 +12,9 @@ public class Customer {
 	private String nationality;
 	private String gender;
 	
+	public Customer() {
+		
+	}
 	public Customer(int id, String customerName, String contactNumber, String dateOfBirth, String address,
 			String nationality, String gender) {
 		this.customerName = customerName;
