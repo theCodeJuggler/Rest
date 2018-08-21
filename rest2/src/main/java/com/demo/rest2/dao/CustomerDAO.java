@@ -17,12 +17,12 @@ public class CustomerDAO {
 		listOfCustomer.put(customer.getId(),customer);
 		
 		return "Successfully";
-		/*Customer cust = new Customer(id,customerName,contactNumber,dateOfBirth,address,nationality,gender);
-		listOfCustomer.put(id,cust);*/
 	}
 	
-	public void updtCustomer(int id, Customer customer){
+	public String updtCustomer(int id, Customer customer){
 		listOfCustomer.replace(id,customer);
+		
+		return "Successfully Updated";
 	}
 	
 	public Map<Integer, Customer> getAllCustomers(){

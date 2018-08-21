@@ -1,42 +1,40 @@
-package com.demo.rest2.service;
+package com.demo.rest2.controller;
 
 import java.util.Collection;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
-import com.demo.rest2.dao.CustomerDAO;
 import com.demo.rest2.pojo.Customer;
+import com.demo.rest2.service.CustomerService;
 
-@Service
-public class CustomerService {
-
-	@Autowired
-	CustomerDAO cDao;
+@RestController
+public class CustomerController {
 	
+	@Autowired
+	CustomerService cService;
+
 	@RequestMapping(value="/addCust", method=RequestMethod.POST)
 	public String addCustomer(@RequestBody Customer customer) {
-		return cDao.addCustomer(customer);
+		return cService.addCustomer(customer);
 	}
 	
 	@RequestMapping(value="/updtCust/{id}", method=RequestMethod.PUT)
 	public String updtCustomer(int id, @RequestBody Customer customer) {
-		return cDao.updtCustomer(id, customer);
+		return cService.updtCustomer(id, customer);
 	}
 	
-	@RequestMapping("/viewCust/{id}")
-	public Map<Integer, Customer> getAllCustomers(){
-		return cDao.getAllCustomers();
+	@RequestMapping("/viewCust")
+	public Collection getAllCustomers(){
+		return cService.getAllCustomers().values();
 	}
 	
 	@RequestMapping(value="/delCust/{id}", method=RequestMethod.DELETE)
 	public void delCustomer(@PathVariable int id) {
-		cDao.delCustomer(id);
+		cService.delCustomer(id);
 	}
-	
 }
