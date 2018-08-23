@@ -1,6 +1,7 @@
 package com.demo.rest2.service;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,14 +25,19 @@ public class CustomerService {
 		return cDao.addCustomer(customer);
 	}
 	
-	@RequestMapping(value="/updtCust/{id}", method=RequestMethod.PUT)
+	/*@RequestMapping(value="/updtCust/{id}", method=RequestMethod.PUT)
 	public String updtCustomer(int id, @RequestBody Customer customer) {
 		return cDao.updtCustomer(id, customer);
-	}
+	}*/
 	
 	@RequestMapping("/viewCust/{id}")
-	public Map<Integer, Customer> getAllCustomers(){
+	//public Map<Integer, Customer> getAllCustomers(){
+	public List<Customer> getAllCustomers(){
 		return cDao.getAllCustomers();
+	}
+	
+	public Customer getCustomerById(int id) {
+		return cDao.getCustomerById(id);
 	}
 	
 	@RequestMapping(value="/delCust/{id}", method=RequestMethod.DELETE)
