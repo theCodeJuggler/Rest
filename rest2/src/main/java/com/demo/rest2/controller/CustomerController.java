@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Link;
+import org.springframework.hateoas.Resource;
 import org.springframework.hateoas.Resources;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,10 +29,10 @@ public class CustomerController {
 		return cService.addCustomer(customer);
 	}
 	
-	/*@RequestMapping(value="/updtCust/{id}", method=RequestMethod.PUT)
-	public String updtCustomer(int id, @RequestBody Customer customer) {
-		return cService.updtCustomer(id, customer);
-	}*/
+	@RequestMapping(value="/updtCust/{id}", method=RequestMethod.PUT)
+	public String updtCustomer(@PathVariable() int id, @RequestBody Customer customer) {
+		return cService.updtCustomer(id-1, customer);
+	}
 	
 	@RequestMapping("/viewCust")
 	public Collection getAllCustomers(){
@@ -57,9 +58,12 @@ public class CustomerController {
 	}
 	
 	@RequestMapping("/viewCust/{id}")
-	public Customer getCustomerById(@PathVariable() int id) {
+	public Resource getCustomerById(@PathVariable() int id) {
 		
-		return cService.getCustomerById(id-1);
+		Link nxtLink = linkTo(methodOn(this.getClass()).getAllCustomers()).withRel("View All");
+		
+		Resource resource = new Resource(cService.getCustomerById(id), nxtLink);
+		return resource;
 	}
 	
 	@RequestMapping(value="/delCust/{id}", method=RequestMethod.DELETE)

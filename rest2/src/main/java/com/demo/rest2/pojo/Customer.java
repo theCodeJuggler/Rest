@@ -11,6 +11,7 @@ public class Customer {
 	private String address;
 	private String nationality;
 	private String gender;
+	private String url;
 	
 	public Customer() {
 		

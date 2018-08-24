@@ -26,11 +26,11 @@ public class CustomerDAO {
 		return "Successfully";
 	}
 	
-	/*public String updtCustomer(int id, Customer customer){
-		listOfCustomer.replace(id,customer);
+	public String updtCustomer(int id, Customer customer){
+		listOfCustomer.set(id,customer);
 		
 		return "Successfully Updated";
-	}*/
+	}
 	
 	public Customer getCustomerById(int id) {
 		

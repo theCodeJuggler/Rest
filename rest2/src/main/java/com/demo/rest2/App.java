@@ -20,7 +20,7 @@ public class App
     	SpringApplication.run(App.class, args);
     }
     
-    /*@Bean
+    @Bean
     public CommandLineRunner loadInitialData(CustomerService service) {
     	return (args) -> {
     		service.addCustomer(new Customer(1, "Holla", "9768453210", "07/07/1987", "Kolkata", "Indian", "Male"));
@@ -28,5 +28,5 @@ public class App
     		service.addCustomer(new Customer(1, "Bholla", "8459763210", "15/07/1967", "Mumbai", "Indian", "Female"));
     		service.addCustomer(new Customer(1, "Cholla", "6845973210", "07/10/2000", "Delhi", "Indian", "Female"));
     	};
-    }*/
+    }
 }

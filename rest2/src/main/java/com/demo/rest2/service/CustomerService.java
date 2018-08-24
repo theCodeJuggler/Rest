@@ -25,10 +25,10 @@ public class CustomerService {
 		return cDao.addCustomer(customer);
 	}
 	
-	/*@RequestMapping(value="/updtCust/{id}", method=RequestMethod.PUT)
+	@RequestMapping(value="/updtCust/{id}", method=RequestMethod.PUT)
 	public String updtCustomer(int id, @RequestBody Customer customer) {
 		return cDao.updtCustomer(id, customer);
-	}*/
+	}
 	
 	@RequestMapping("/viewCust/{id}")
 	//public Map<Integer, Customer> getAllCustomers(){
