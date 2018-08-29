@@ -12,6 +12,8 @@ import com.demo.rest2.service.CustomerService;
  * Hello world!
  *
  */
+//@EnableGlobalSecurity
+
 @SpringBootApplication
 public class App 
 {
