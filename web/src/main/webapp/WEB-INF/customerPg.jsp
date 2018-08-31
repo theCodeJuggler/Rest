@@ -18,7 +18,7 @@
 			<th>Nationality</th>
 			<th>Gender</th>
 		</tr>
-		<jstl:forEach var="map" items="${viewCust}">
+		<jstl:forEach var="map" items="${vwCust}">
 			<tr>
 				<td>${map.get("id") }</td>
 				<td>${map.get("customerName") }</td>
@@ -32,7 +32,7 @@
 	</table>
 	
 	<jstl:forEach var="link" items="${links}">
-		<a href="${link.getHref?()}">${link.getRel()}</a>
+		<a href="${link.getHref()}">${link.getRel()}</a>
 	</jstl:forEach>
 </body>
 </html>

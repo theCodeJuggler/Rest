@@ -8,10 +8,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	test
-	
-	${viewCust}
-	
 	<table>
 		<tr>
 			<th>Customer ID</th>
@@ -34,5 +30,9 @@
 			</tr>
 		</jstl:forEach>
 	</table>
+	
+	<jstl:forEach var="link" items="${links}">
+		<a href="${link.getHref?()}">${link.getRel()}</a>
+	</jstl:forEach>
 </body>
 </html>
