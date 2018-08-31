@@ -1,20 +1,22 @@
 package com.demo.rest2.controller;
 
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.Resource;
 import org.springframework.hateoas.Resources;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import static org.springframework.hateoas.mvc.ControllerLinkBuilder.*;
 
 import com.demo.rest2.pojo.Bill;
 import com.demo.rest2.pojo.Customer;
@@ -26,6 +28,8 @@ public class CustomerController {
 	
 	@Autowired
 	CustomerService cService;
+	
+	private Logger logger = org.slf4j.LoggerFactory.getLogger(CustomerController.class);
 
 	@RequestMapping(value="/addCust", method=RequestMethod.POST)
 	public String addCustomer(@RequestBody Customer customer) {
@@ -54,6 +58,7 @@ public class CustomerController {
 		Link nxtLink = linkTo(methodOn(this.getClass()).getAllCustomersByPage(start+count, count)).withRel("Next Link");
 		Link prevLink = linkTo(methodOn(this.getClass()).getAllCustomersByPage(start-count>=0?start-count:1, count)).withRel("Previous Link");
 		
+		logger.info("tested resource");
 		Resources resources = new Resources(customer, nxtLink, prevLink);
 		
 		return resources;
